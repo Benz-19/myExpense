@@ -6,18 +6,23 @@ use App\Http\Controllers\UserController;
 use App\Services\messageService;
 
 
-
-
-$user = new UserController();
-$messageService = new messageService();
-//--- REGISTRATION
 if (isset($_POST['submitRegistration'])) {
+    processRegistration();
+} else {
+    processLogin();
+}
+
+//--- REGISTRATION
+function processRegistration()
+{
+    $user = new UserController();
+    $messageService = new messageService();
     $username = $_POST['name'];
     $password = $_POST['password'];
     $verifyPassword = $_POST['verifyPassword'];
     $email = $_POST['email'];
 
-    $user_type = 'admin'; //default
+    $user_type = 'user'; //default
 
     if (empty($username) || empty($password) || empty($password) || empty($verifyPassword) || empty($email)) {
         $messageService::errorMesssage("Failed to get the read the data successfully!!!");
@@ -34,4 +39,42 @@ if (isset($_POST['submitRegistration'])) {
             }
         }
     }
+}
+
+// LOGIN
+function processLogin()
+{
+    $user = new UserController();
+    $messageService = new messageService();
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if (empty($email) || empty($password)) {
+        $messageService::errorMesssage("Ensure all fields are filled completely...");
+    } else {
+        $userData = $user->fetchUserData((string) $email);
+
+        // Check if the user exists
+        if (empty($userData)) {
+            $messageService::errorMesssage("User already exists...\nCreate a new Account\n\tReturning...");
+        } else {
+            // $dbEmail = $userData['email'];
+            $dbpass = $userData[0]['user_password'];
+
+            //Authenticate user password
+            if (password_verify($password, $dbpass)) {
+                header("Location: /myExpense/dashboard");
+                exit;
+            } else {
+                $messageService::errorMesssage("Incorrect password.");
+            }
+        }
+    }
+}
+
+
+
+function test()
+{
+    return "hello";
 }
