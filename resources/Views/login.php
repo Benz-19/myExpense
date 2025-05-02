@@ -1,3 +1,16 @@
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use App\Models\DB;
+
+$db = new DB();
+if ($db->connection())
+    echo "yes";
+else
+    echo "no";
+?>
+
+
 <html lang="en">
 
 <head>
