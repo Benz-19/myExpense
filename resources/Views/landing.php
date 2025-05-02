@@ -1,15 +1,9 @@
-<?php
-$a = 5;
-echo ++$a;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Core Css -->
-    <link rel="stylesheet" href="./public/css/index.css">
     <title>myExpense</title>
 </head>
 
@@ -20,10 +14,12 @@ echo ++$a;
         </div>
         <div class="options">
             <div class="login">
-                <button>Login</button>
+                <a href="/myExpense/login">
+                    <button>Login</button>
+                </a>
             </div>
             <div class="sign-up">
-                <a href="">
+                <a href="/myExpense/sign-up">
                     <button>Sign up</button>
                 </a>
             </div>
