@@ -1,0 +1,19 @@
+{
+    "name": "hp/my-expense",
+    "description": "user expense tracker",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hp\\MyExpense\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ugwu Kingsley"
+        }
+    ],
+    "minimum-stability": "stable"
+}

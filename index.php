@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Core Css -->
-    <link rel="stylesheet" href="./public/css/index.css">
-    <title>myExpense</title>
-</head>
+$request = $_SERVER['REQUEST_URI'];
 
-<body>
-    <section class="main-container glass">
-        <div class="logo-cont">
-            <img src="./public/images/logo (2).png" alt="">
-        </div>
-        <div class="options">
-            <div class="login">
-                <button>Login</button>
-            </div>
-            <div class="sign-up">
-                <button>Sign up</button>
-            </div>
-        </div>
-    </section>
-</body>
-
-</html>
+echo $request;
+$viewDir = '/resources/Views/';
+switch ($request) {
+    case '':
+    case '/':
+        require __DIR__ . $viewDir . 'landing.php';
+        break;
+    default:
+        require __DIR__ . $viewDir . '404.php';
+        break;
+}
