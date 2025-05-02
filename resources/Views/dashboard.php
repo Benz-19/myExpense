@@ -82,11 +82,10 @@
 
                 <div id="expense-cards" class="expense-cards-container mt-6"></div>
 
-                <div id="submit-section" class="hidden mt-8 flex justify-end">
-                    <button onclick="submitExpenses()"
-                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit
+                <!-- <div id="submit-section" class="hidden mt-8 flex justify-end">
+                    <button onclick="submitExpenses()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" name="submitExpense">Submit
                         Expenses</button>
-                </div>
+                </div> -->
             </main>
         </div>
     </div>
@@ -104,7 +103,7 @@
             expenseCardsContainer.innerHTML = '';
 
             if (itemCount > 0) {
-                let formHTML = '<form id="expenseForm" method="POST" action="submit_expenses.php">';
+                let formHTML = '<form id="expenseForm" method="POST" action="/myExpense/submit_expenses">';
                 for (let i = 0; i < itemCount; i++) {
                     formHTML += `
                         <div class="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded p-4 shadow">
@@ -139,7 +138,15 @@
                         </div>
                     `;
                 }
+                formHTML += `
+                <div class="submit-button-container mt-8">
+                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Submit Expenses
+                    </button>
+                </div>
+                `;
                 formHTML += '</form>';
+
                 expenseCardsContainer.innerHTML = formHTML;
                 submitSection.classList.remove('hidden');
                 document.getElementById('input-section').classList.add('hidden');
