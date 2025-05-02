@@ -53,7 +53,7 @@ class UserController extends Controller
             $params = [
                 ":email" => $email
             ];
-            $this->db::fetchAllData($sql, $params);
+            return $this->db::fetchAllData($sql, $params);
         } catch (PDOException $e) {
             echo "FETCHING USER DATA ERROR: " . $e->getMessage();
         }

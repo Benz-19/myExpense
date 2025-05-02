@@ -86,6 +86,9 @@
                                 </div>
                                 <button class="py-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full transition duration-200 transLeft" name="submitRegistration">Get started</button>
                             </form>
+                            <a href="/myExpense/login">
+                                <button class="mt-8 py-4 w-16 bg-green-500 hover:bg-blue-600 text-black font-bold transition duration-200 transLeft">Login</button>
+                            </a>
                         </div>
                     </div>
                 </div>

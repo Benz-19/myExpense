@@ -17,21 +17,20 @@ if (isset($_POST['submitRegistration'])) {
     $verifyPassword = $_POST['verifyPassword'];
     $email = $_POST['email'];
 
-    $user_type = 'user'; //default
+    $user_type = 'admin'; //default
 
     if (empty($username) || empty($password) || empty($password) || empty($verifyPassword) || empty($email)) {
         $messageService::errorMesssage("Failed to get the read the data successfully!!!");
-        // header("Location /landing");
-        // exit;
     } else {
         if ($password !== $verifyPassword) {
             $messageService::errorMesssage("Ensure passwords are similar!!!");
         } else {
             // detemine if the user exists
             if (empty($user->fetchUserData((string)$email))) {
-                $messageService::errorMesssage("User already exists... Returning...");
-            } else {
                 $user->register((string)$username, (string)$password, (string)$email, (string)$user_type);
+                $messageService::successMessage("Account was created successfully!!! Returning ...");
+            } else {
+                $messageService::errorMesssage("User already exists... Returning...");
             }
         }
     }
