@@ -58,4 +58,10 @@ class UserController extends Controller
             echo "FETCHING USER DATA ERROR: " . $e->getMessage();
         }
     }
+
+    public function getUserId($email)
+    {
+        $id = $this->fetchUserData($email)[0]['id'];
+        return $id;
+    }
 }

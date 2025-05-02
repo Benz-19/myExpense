@@ -125,6 +125,9 @@ $viewDir = '/resources/Views/';
         case '/submit_expenses':
             require __DIR__ . $viewDir . 'submit_expenses.php';
             break;
+        case '/get_expenses':
+            require __DIR__ . $viewDir . 'get_expenses.php';
+            break;
         default:
             require __DIR__ . $viewDir . '404.php';
             break;

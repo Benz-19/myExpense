@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_state'])) {
+    header('Location: /myExpense/login');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="light">
 
@@ -47,6 +55,7 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
         <aside class="sidebar bg-slate-800 text-gray-200 dark:bg-slate-900">
+            <img src="<?php echo '/public/images/logo.png'; ?>" alt="logo">
             <div class="sidebar-logo">myExpense</div>
             <nav class="sidebar-nav">
                 <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
@@ -60,7 +69,10 @@
         <!-- Main content -->
         <div class="flex-1 overflow-y-auto">
             <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
-                <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Expenses</h1>
+                <div class="flex flex-col">
+                    <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
+                    <h4 class="mt-10 text-xl font-bold text-gray-800 dark:text-gray-100">Expenses</h4>
+                </div>
                 <div class="flex items-center gap-4">
                     <input type="text" placeholder="Search expenses..."
                         class="p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" />

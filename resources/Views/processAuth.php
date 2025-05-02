@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\Http\Controllers\UserController;
@@ -61,8 +61,17 @@ function processLogin()
             // $dbEmail = $userData['email'];
             $dbpass = $userData[0]['user_password'];
 
+            // store the data in a list for the session
+            $currentUserData = [
+                'user_id' => $userData[0]['id'],
+                'username' => $userData[0]['username'],
+                'user_type' => $userData[0]['user_type'],
+                'email' => $userData[0]['email']
+            ];
             //Authenticate user password
             if (password_verify($password, $dbpass)) {
+                $_SESSION['user_state'] = true;
+                $_SESSION['user_details'] = $currentUserData;
                 header("Location: /myExpense/dashboard");
                 exit;
             } else {
