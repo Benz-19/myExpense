@@ -44,24 +44,27 @@ class DB
     }
 
     //SQL Query execution
-    static function execute(string $query,  $params = [])
+    public static function execute(string $query,  $params = [])
     {
-        $sql = self::connection()->prepare($query);
+        $db = new self();
+        $sql = $db->connection()->prepare($query);
         return $sql->execute($params);
     }
 
     //SQL Query fetch a single data
-    static function fetchSingleData(string $query,  $params = [])
+    public static function fetchSingleData(string $query,  $params = [])
     {
-        $sql = self::connection()->prepare($query);
+        $db = new self();
+        $sql = $db->connection()->prepare($query);
         $sql->execute($params);
         return $sql->fetch(PDO::FETCH_ASSOC);
     }
 
     //SQL Query fetch all data
-    static function fetchAllData(string $query,  $params = [])
+    public static function fetchAllData(string $query,  $params = [])
     {
-        $sql = self::connection()->prepare($query);
+        $db = new self();
+        $sql = $db->connection()->prepare($query);
         $sql->execute($params);
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }

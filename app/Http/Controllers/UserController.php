@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Http\UserControllers;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../Models/db.php';
+namespace App\Http\Controllers;
 
 use PDOException;
 use App\Models\DB;
 use App\Http\Controllers\Controller;
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
 
 
 /**
@@ -29,7 +29,7 @@ class UserController extends Controller
     public function register(string $name, string $password, string $email, string $type)
     {
         try {
-            $query = "INSERT INTO users (username, password, email, user_type) VALUES (:name,:password,:email,:type)";
+            $query = "INSERT INTO users (username, user_password, email, user_type) VALUES (:name,:password,:email,:type)";
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
