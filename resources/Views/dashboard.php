@@ -4,6 +4,19 @@ if (!isset($_SESSION['user_state'])) {
     header('Location: /myExpense/login');
     exit;
 }
+
+use App\Http\Controllers\BalanceController;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$bal = new BalanceController();
+$userBalance = $bal->getBalance($_SESSION['user_details']['user_id']);
+
+$userBalance = ($userBalance >= 0.00) ? $userBalance : -$userBalance;
+$balanceClass = $userBalance <= 0 ? 'text-red-500' : 'text-green-600';
+
+// Today's cost
+$todayCost = 0;
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +84,9 @@ if (!isset($_SESSION['user_state'])) {
             <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
                 <div class="flex flex-col">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
+                    <h3 class="mt-10 text-xl font-bold <?php echo $balanceClass; ?> dark:text-gray-100">
+                        <?php echo number_format($userBalance, 2); ?>
+                    </h3>
                     <h4 class="mt-10 text-xl font-bold text-gray-800 dark:text-gray-100">Expenses</h4>
                 </div>
                 <div class="flex items-center gap-4">
@@ -82,22 +98,24 @@ if (!isset($_SESSION['user_state'])) {
                 </div>
             </header>
 
-            <main class="main-content">
-                <div id="input-section" class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+            <main class="main-content flex justify-around flex-wrap">
+                <div class=" mt-8 mr-3 bg-white dark:bg-black-900 p-6 rounded shadow h-fit">
+                    <form action="/myExpense/get_expenses" method="POST" class="flex flex-col">
+                        <input type="number" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" name="amount" placeholder="0.00">
+                        <button class="mt-8 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" name="sendAmount"> Update Balance</button>
+                    </form>
+                </div>
+
+                <div id="input-section" class="bg-white dark:bg-gray-800 p-6 rounded shadow  h-fit mr-3">
                     <label for="itemCount" class="block text-sm font-medium mb-2">Number of Expenses:</label>
                     <input type="number" id="itemCount"
                         class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                         min="1" value="1">
                     <button onclick="generateExpenseCards()"
                         class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Generate Expenses</button>
+                    <div id="expense-cards" class="expense-cards-container mt-6"></div>
                 </div>
 
-                <div id="expense-cards" class="expense-cards-container mt-6"></div>
-
-                <!-- <div id="submit-section" class="hidden mt-8 flex justify-end">
-                    <button onclick="submitExpenses()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" name="submitExpense">Submit
-                        Expenses</button>
-                </div> -->
             </main>
         </div>
     </div>

@@ -2,6 +2,7 @@
 session_start();
 require __DIR__ . '/../../vendor/autoload.php';
 
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\UserController;
 use App\Services\messageService;
 
@@ -46,6 +47,8 @@ function processLogin()
 {
     $user = new UserController();
     $messageService = new messageService();
+    $userBalance = new BalanceController();
+
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -71,6 +74,7 @@ function processLogin()
             //Authenticate user password
             if (password_verify($password, $dbpass)) {
                 $_SESSION['user_state'] = true;
+                $currentUserData['balance'] = $userBalance->getBalance($_SESSION['user_details']['user_id']);
                 $_SESSION['user_details'] = $currentUserData;
                 header("Location: /myExpense/dashboard");
                 exit;
