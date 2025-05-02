@@ -122,6 +122,9 @@ $viewDir = '/resources/Views/';
         case '/processAuth':
             require __DIR__ . $viewDir . 'processAuth.php';
             break;
+        case '/submit_expenses':
+            require __DIR__ . $viewDir . 'submit_expenses.php';
+            break;
         default:
             require __DIR__ . $viewDir . '404.php';
             break;
