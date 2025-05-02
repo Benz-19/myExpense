@@ -33,7 +33,7 @@
                     </div>
                     <div class="w-full lg:w-1/2 px-4">
                         <div class="px-6 lg:px-20 py-12 lg:py-24 bg-gray-600 rounded-lg">
-                            <form action="#">
+                            <form action="/myExpense/processAuth" method="POST">
                                 <h3 class="mb-10 text-2xl text-white font-bold font-heading">Register Account</h3>
 
                                 <div class="flex items-center pl-6 mb-3 bg-white rounded-full">

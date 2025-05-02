@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+namespace App\Http\UserControllers;
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once __DIR__ . '/../Models/db.php';
 
-use App\Http\Controllers\Controller;
+use PDOException;
 use App\Models\DB;
+use App\Http\Controllers\Controller;
 
 
 /**
@@ -27,9 +30,12 @@ class UserController extends Controller
     {
         try {
             $query = "INSERT INTO users (username, password, email, user_type) VALUES (:name,:password,:email,:type)";
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
             $params = [
                 ":name" => $name,
-                ":password" => $password,
+                ":password" => $hashed_password,
                 ":email" => $email,
                 ":type" => $type
             ];
