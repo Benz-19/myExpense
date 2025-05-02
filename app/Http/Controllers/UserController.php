@@ -45,4 +45,17 @@ class UserController extends Controller
             echo "USER REGISTRATION ERROR: " . $e->getMessage();
         }
     }
+
+    public function fetchUserData(string $email)
+    {
+        try {
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $params = [
+                ":email" => $email
+            ];
+            $this->db::fetchAllData($sql, $params);
+        } catch (PDOException $e) {
+            echo "FETCHING USER DATA ERROR: " . $e->getMessage();
+        }
+    }
 }

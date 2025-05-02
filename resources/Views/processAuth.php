@@ -18,17 +18,21 @@ if (isset($_POST['submitRegistration'])) {
     $email = $_POST['email'];
 
     $user_type = 'user'; //default
-    $url = '/myExpense/sign-up';  // for registration, url = /sign-up
 
     if (empty($username) || empty($password) || empty($password) || empty($verifyPassword) || empty($email)) {
-        $messageService::errorMesssage("Failed to get the read the data successfully;", $url);
+        $messageService::errorMesssage("Failed to get the read the data successfully!!!");
         // header("Location /landing");
         // exit;
     } else {
         if ($password !== $verifyPassword) {
-            $messageService::errorMesssage("Ensure passwords are similar", $url);
+            $messageService::errorMesssage("Ensure passwords are similar!!!");
         } else {
-            $user->register((string)$username, (string)$password, (string)$email, (string)$user_type);
+            // detemine if the user exists
+            if (empty($user->fetchUserData((string)$email))) {
+                $messageService::errorMesssage("User already exists... Returning...");
+            } else {
+                $user->register((string)$username, (string)$password, (string)$email, (string)$user_type);
+            }
         }
     }
 }

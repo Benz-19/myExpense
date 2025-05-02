@@ -7,15 +7,9 @@ include_once __DIR__ . '/../Helpers/all_inlcudes.php';
 class messageService
 {
 
-    static function errorMesssage($msg, $url)
+    static function errorMesssage($msg)
     {
         echo '<div class="error">' . ' <h1> Error: ' . $msg . '</h1>' . '</div>';
-        echo '
-        <script>
-                const url = "' . $url . '";
-                console.log("Injected URL: ", url); // Debugging log to check URL
-        </script>
-        ';
     }
 }
 ?>
@@ -32,9 +26,8 @@ class messageService
         var error_msg = document.querySelectorAll('.error');
 
         if (error_msg.length > 0) {
-            console.log("error", url);
             setTimeout(() => {
-                window.location.href = url;
+                window.history.back(); //redirect to the previous page
             }, 9000);
         } else {
             console.log("no error");
