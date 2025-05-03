@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_state'])) {
 }
 
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\ExpenseController;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -16,7 +17,9 @@ $userBalance = ($userBalance >= 0.00) ? $userBalance : -$userBalance;
 $balanceClass = $userBalance <= 0 ? 'text-red-500' : 'text-green-600';
 
 // Today's cost
-$todayCost = 0;
+$expense = new ExpenseController();
+$todayCost = $expense->getTodayCost($_SESSION['user_details']['user_id']);
+$todayCost = $todayCost > 0 ? $todayCost : 0.00;
 ?>
 
 <!DOCTYPE html>
@@ -89,12 +92,19 @@ $todayCost = 0;
                     </h3>
                     <h4 class="mt-10 text-xl font-bold text-gray-800 dark:text-gray-100">Expenses</h4>
                 </div>
-                <div class="flex items-center gap-4">
-                    <input type="text" placeholder="Search expenses..."
-                        class="p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-                    <button onclick="toggleTheme()"
-                        class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Toggle
-                        Theme</button>
+
+                <div class="flex flex-col items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <input type="text" placeholder="Search expenses..."
+                            class="p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+                        <button onclick="toggleTheme()"
+                            class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Toggle
+                            Theme</button>
+                    </div>
+
+                    <div class="flex items-center">
+                        <h3 class="mt-10 text-xl font-bold text-green-600 dark:text-gray-100">Today's Expense = <?php echo $todayCost; ?></h3>
+                    </div>
                 </div>
             </header>
 

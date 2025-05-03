@@ -40,4 +40,33 @@ class ExpenseController extends Controller
             echo "Error: FAILED TO INSERT THE EXPENSE " . $e->getMessage();
         }
     }
+
+    // Total cost with user id
+    public function getTotalCost($id) {}
+
+    // Total cost with user id
+    public function getTodayCost($id)
+    {
+        try {
+            $dateToday = date("Y-m-d");
+            $query = "SELECT price FROM expenses WHERE user_id = :id AND date = :today";
+            $params = [
+                ":id" => $id,
+                ":today" => $dateToday
+            ];
+            $result = $this->db::fetchAllData($query, $params);
+
+            $todayCost = 0;
+            if (!empty($result)) {
+                foreach ($result as $row) {
+                    $todayCost += $row['price'];
+                }
+            }
+
+            return $todayCost;
+        } catch (PDOException $e) {
+            echo "Error: FAILED TO GET TODAY's COST - " . $e->getMessage();
+            return 0;
+        }
+    }
 }
