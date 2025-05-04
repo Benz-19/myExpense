@@ -172,6 +172,8 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
 
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <div class="flex h-screen overflow-hidden">
+        <!-- Main content -->
+        <div class="flex-1 overflow-y-auto maTop">
         <!-- Sidebar -->
 <div class="relative h-full">
         <button id="menu-button" class="menu-button">
@@ -205,8 +207,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         </aside>
     </div>
 
-        <!-- Main content -->
-        <div class="flex-1 overflow-y-auto maTop">
+            
             <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
                 <div class="flex flex-col ml-12">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
