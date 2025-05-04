@@ -217,7 +217,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
                 <div class="flex flex-col justify-center items-center ml-20 welU">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
                     <h3 class="mt-10 text-xl font-bold <?php echo $balanceClass; ?> dark:text-gray-100">
-                        <?php echo number_format($userBalance, 2); ?>
+                        <?php echo "Balance: " . number_format($userBalance, 2); ?>
                     </h3>
                     <h4 class="mt-10 text-xl font-bold text-gray-800 dark:text-gray-100">Expenses</h4>
                 </div>
@@ -238,7 +238,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
             </header>
 
             <main class="main-content flex justify-around flex-wrap">
-                <div class=" mt-8 mr-3 bg-white dark:bg-black-900 p-6 rounded shadow h-fit">
+                <div class=" mt-8 mb-4 mr-3 bg-white dark:bg-black-900 p-6 rounded shadow h-fit">
                     <form action="/myExpense/get_expenses" method="POST" class="flex flex-col">
                         <input type="number" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" name="amount" placeholder="0.00">
                         <button class="mt-8 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" name="sendAmount"> Update Balance</button>
