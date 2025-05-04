@@ -16,7 +16,7 @@ if (isset($_POST['submitRegistration'])) {
 //--- REGISTRATION
 function processRegistration()
 {
-    session_start();
+   // session_start();
     $user = new UserController();
     $messageService = new messageService();
     $username = $_POST['name'];
@@ -46,7 +46,7 @@ function processRegistration()
 // LOGIN
 function processLogin()
 {
-    session_start();
+   //session_start();
     $user = new UserController();
     $messageService = new messageService();
     $userBalance = new BalanceController();
