@@ -47,6 +47,11 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
             background-color: #f9f9f9;
             /* Optional: light background */
         }
+
+        .maTop{
+            margin-top:100px;
+            padding: 0 60px:
+        }
         
         .sidebar {
             width: 250px;
@@ -201,7 +206,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
     </div>
 
         <!-- Main content -->
-        <div class="flex-1 overflow-y-auto mt-20">
+        <div class="flex-1 overflow-y-auto maTop">
             <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
                 <div class="flex flex-col ml-12">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
