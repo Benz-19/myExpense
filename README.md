@@ -14,7 +14,7 @@
 * **Frontend**: HTML, CSS, Tailwind, JavaScript
 * **Backend**: PHP
 * **Database**: MySQL (hosted via Railway)
-* **Hosting**: Railway myexpense-production.up.railway.app/
+* **Hosting**: Railway https://myexpense-production.up.railway.app/
 
 ## Installation (Local Development)
 
