@@ -199,7 +199,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         <!-- Main content -->
         <div class="flex-1 overflow-y-auto maTop">
 
-            <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
+            <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex flex-wrap justify-between items-center">
         <!-- aside Button-->
                 <button id="menu-button" class="menu-button">
                      <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
