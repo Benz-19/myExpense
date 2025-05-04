@@ -32,7 +32,7 @@
 
 3. **Configure Database Connection**:
 
-   * Update the database configuration file (e.g., `config.php`) with your Railway database credentials.
+   * Update the database configuration file (e.g., `DB.php`) with your Railway database credentials.
 
 4. **Run the Application**:
 
