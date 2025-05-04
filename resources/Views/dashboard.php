@@ -49,7 +49,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         }
 
         .maTop{
-            margin-top:12px;
+            margin-top:40px;
             padding: 0 60px:
         }
         
@@ -172,19 +172,8 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
 
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <div class="flex h-screen overflow-hidden">
-        <!-- Main content -->
-        <div class="flex-1 overflow-y-auto maTop">
         <!-- Sidebar -->
 <div class="relative h-full">
-        <button id="menu-button" class="menu-button">
-             <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
-                <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
-            </svg>
-            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 hidden">
-                <line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line>
-            </svg>
-        </button>
-
         <div id="overlay" class="overlay"></div>
 
         <aside id="sidebar" class="sidebar">
@@ -207,8 +196,20 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         </aside>
     </div>
 
-            
+        <!-- Main content -->
+        <div class="flex-1 overflow-y-auto maTop">
+
             <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
+        <!-- aside Button-->
+                <button id="menu-button" class="menu-button">
+                     <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                        <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 hidden">
+                        <line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line>
+                    </svg>
+                </button>
+                
                 <div class="flex flex-col ml-12">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
                     <h3 class="mt-10 text-xl font-bold <?php echo $balanceClass; ?> dark:text-gray-100">
