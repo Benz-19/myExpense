@@ -204,7 +204,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         <div class="flex-1 overflow-y-auto">
             <header class="bg-white dark:bg-gray-800 shadow px-6 py-4 flex justify-between items-center">
                 <div class="flex flex-col">
-                    <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
+                    <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100 mr-6">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
                     <h3 class="mt-10 text-xl font-bold <?php echo $balanceClass; ?> dark:text-gray-100">
                         <?php echo number_format($userBalance, 2); ?>
                     </h3>
