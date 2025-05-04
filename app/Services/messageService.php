@@ -1,24 +1,3 @@
-<?php
-
-namespace App\Services;
-
-include_once __DIR__ . '/../Helpers/all_inlcudes.php';
-
-class messageService
-{
-
-    public static function errorMesssage($msg)
-    {
-        echo '<div class="error">' . ' <h1> Error: ' . $msg . '</h1>' . '</div>';
-    }
-
-    public static function successMessage($msg)
-    {
-        echo '<div class="success">' . ' <h1>' . $msg . '</h1>' . '</div>';
-    }
-}
-?>
-
 <style>
     .error {
         color: red;
@@ -55,3 +34,26 @@ class messageService
         }
     });
 </script>
+
+<?php
+
+namespace App\Services;
+
+include_once __DIR__ . '/../Helpers/all_inlcudes.php';
+
+class messageService
+{
+
+    public static function errorMesssage($msg)
+    {
+        echo '<div class="error">' . ' <h1> Error: ' . $msg . '</h1>' . '</div>';
+    }
+
+    public static function successMessage($msg)
+    {
+        echo '<div class="success">' . ' <h1>' . $msg . '</h1>' . '</div>';
+    }
+}
+?>
+
+
