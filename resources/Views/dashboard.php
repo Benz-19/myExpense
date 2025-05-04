@@ -36,6 +36,18 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         };
     </script>
     <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            /* Optional: light background */
+        }
+        
         .sidebar {
             width: 250px;
             height: 100vh;
