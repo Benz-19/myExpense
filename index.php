@@ -1,5 +1,7 @@
 <?php
-
+if(!session_start()){
+    session_start();
+}
 $request = $_SERVER['REQUEST_URI'];
 
 $request = str_replace('/myExpense', '', $request); //replaces the default url with '/'
