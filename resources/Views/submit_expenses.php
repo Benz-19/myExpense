@@ -31,39 +31,27 @@ while (isset($_POST["category_$counter"])) {
 }
 
 //Display success message and return
-$_SESSION['error_message'] = $messageService::successMessage("Congratulations, your expenses got updated...\n--------- Redirecting ---------");
-
-
-if (isset($_SESSION['error_message'])) {
-    echo $_SESSION['error_message'];
-    unset($_SESSION['error_message']);
-    ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var error_msg = document.querySelectorAll('.error');
-            if (error_msg.length > 0) {
-                setTimeout(() => {
-                    window.history.back(); //redirect to the previous page
-                }, 9000);
-            }
-        });
-    </script>
-    <?php
-}
-
+$_SESSION['success_message'] = $messageService::successMessage("Congratulations, your expenses got updated...\n--------- Redirecting ---------");
+   
 if (isset($_SESSION['success_message'])) {
-    echo $_SESSION['success_message'];
+    echo '<script>const msg = true;</script>';
+    echo '<div class ="success">' . $_SESSION['success_message'] . '</div>';
     unset($_SESSION['success_message']);
     ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var success_msg = document.querySelectorAll('.success');
-            if (success_msg.length > 0) {
-                setTimeout(() => {
-                    window.history.back(); //redirect to the previous page
-                }, 9000);
-            }
-        });
+        var success_msgs = document.querySelectorAll('.success');
+    
+        if (success_msgs.length > 0) {
+            success_msgs.forEach(function(msgElement) {
+                msgElement.style.color = 'green';
+            });
+    
+            setTimeout(() => {
+                window.history.back(); //redirect to the previous page
+            }, 9000);
+        }
+    });
     </script>
     <?php
 }
