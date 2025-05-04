@@ -95,6 +95,7 @@
 
 <body>
     <section class="main-container glass">
+        <h1 style="text-align:center;font:bold;">MY EXPENSE TRACKER</h1>
         <div class="logo-cont">
             <img src="./public/images/logo (2).png" alt="">
         </div>
