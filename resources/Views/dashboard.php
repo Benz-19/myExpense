@@ -49,13 +49,14 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         }
 
         .maTop{
-            margin-top: 40px;
+            margin-top: 100px;
             padding: 0 60px:
         }
 
         header{
             display: flex;
             flex-wrap: wrap;
+            max-width: fit-content;
         }
         
         .sidebar {
