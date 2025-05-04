@@ -75,26 +75,130 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
             gap: 16px;
             margin-top: 1rem;
         }
+
+
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 256px; /* Width of the sidebar */
+            background-color: #2d3748; 
+            color: #f7fafc; /* Tailwind's gray-200 */
+            z-index: 50;
+            transform: translateX(-100%); 
+            transition: transform 0.3s ease-in-out; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+            overflow-y: auto; 
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            display: none; 
+        }
+
+        .overlay.active {
+            display: block; /* Show the overlay */
+            opacity: 0.5;
+        }
+
+        .menu-button {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 60; 
+            background-color: #2d3748; 
+            color: #f7fafc; /* Tailwind's gray-200 */
+            padding: 0.5rem;
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-button:hover {
+            background-color: #4a5568;
+        }
+
+        .nav-links {
+            padding-top: 4rem; /* Add padding to the top to move links below button */
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem; /* Tailwind's text-sm */
+            color: #f7fafc; /* Tailwind's gray-200 */
+            text-decoration: none;
+            transition: background-color 0.2s ease-in-out; /* Smooth transition */
+        }
+
+        .nav-links a:hover {
+            background-color: #4a5568; 
+        }
+
+        .logout-button {
+            margin-top: 2rem; /* Tailwind's mt-8 */
+            background-color: #c53030; 
+            color: #fff;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .logout-button:hover {
+            background-color: #38a169; 
+        }
     </style>
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="sidebar bg-slate-800 text-gray-200 dark:bg-slate-900">
-            <img src="<?php echo '/public/images/logo.png'; ?>" alt="logo">
-            <div class="sidebar-logo">myExpense</div>
-            <nav class="sidebar-nav">
-                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
-                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Products</a>
-                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Statistics</a>
-                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Inbox</a>
-                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Notifications</a>
-                <a href="/myExpense/logout">
-                  <button class="mt-8 bg-red-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Logout</button>
-                </a>
-            </nav>
+<div class="relative h-full">
+        <button id="menu-button" class="menu-button">
+             <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                <line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 hidden">
+                <line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line>
+            </svg>
+        </button>
+
+        <div id="overlay" class="overlay"></div>
+
+        <aside id="sidebar" class="sidebar">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center gap-2 p-4 border-b border-gray-700">
+                    <img src="/public/images/logo.png" alt="logo" class="w-10 h-auto">
+                    <div class="text-lg font-semibold">myExpense</div>
+                </div>
+                <nav class="nav-links flex-1 overflow-y-auto">
+                    <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
+                    <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Products</a>
+                    <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Statistics</a>
+                    <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Inbox</a>
+                    <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Notifications</a>
+                    <a href="/myExpense/logout" class="block">
+                        <button class="logout-button">Logout</button>
+                    </a>
+                </nav>
+            </div>
         </aside>
+    </div>
 
         <!-- Main content -->
         <div class="flex-1 overflow-y-auto">
@@ -233,6 +337,28 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
             document.getElementById('input-section').classList.remove('hidden');
             document.getElementById('itemCount').value = 1;
         }
+
+        
+        // Menu Button
+        const menuButton = document.getElementById('menu-button');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        menuButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        });
     </script>
 </body>
 
