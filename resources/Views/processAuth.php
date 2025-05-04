@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require __DIR__ . '/../../vendor/autoload.php';
 
 use App\Http\Controllers\BalanceController;
@@ -73,6 +73,7 @@ function processLogin()
             ];
             //Authenticate user password
             if (password_verify($password, $dbpass)) {
+                session_start();
                 $_SESSION['user_state'] = true;
                 $currentUserData['balance'] = $userBalance->getBalance($_SESSION['user_details']['user_id']);
                 $_SESSION['user_details'] = $currentUserData;
