@@ -75,7 +75,7 @@ function processLogin()
             if (password_verify($password, $dbpass)) {
                // session_start();
                 $_SESSION['user_state'] = true;
-                $currentUserData['balance'] = $userBalance->getBalance($_SESSION['user_details']['user_id']);
+                $currentUserData['balance'] = $userBalance->getBalance($currentUserData['user_id']);
                 $_SESSION['user_details'] = $currentUserData;
                 header("Location: /dashboard");
                 exit;
