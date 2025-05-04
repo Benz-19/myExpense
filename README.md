@@ -1,6 +1,6 @@
 # myExpense
 
-**myExpense** is a web-based expense tracking application designed to help users manage their personal finances efficiently. Built with PHP and JavaScript, it offers a user-friendly interface for recording, categorizing, and analyzing expenses.
+**myExpense** is a web-based expense tracking application designed to help users manage their personal finances efficiently. Built with PHP, Tailwind and JavaScript, it offers a user-friendly interface for recording, categorizing, and analyzing expenses.
 
 ## Features
 
@@ -11,10 +11,10 @@
 
 ## Technologies Used
 
-* **Frontend**: HTML, CSS, JavaScript
+* **Frontend**: HTML, CSS, Tailwind, JavaScript
 * **Backend**: PHP
 * **Database**: MySQL (hosted via Railway)
-* **Hosting**: Railway
+* **Hosting**: Railway myexpense-production.up.railway.app/
 
 ## Installation (Local Development)
 
