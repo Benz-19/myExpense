@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['user_state'])) {
     header("Location: /myExpense/login");
     exit;
