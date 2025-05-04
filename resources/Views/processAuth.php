@@ -77,7 +77,7 @@ function processLogin()
                 $_SESSION['user_state'] = true;
                 $currentUserData['balance'] = $userBalance->getBalance($currentUserData['user_id']);
                 $_SESSION['user_details'] = $currentUserData;
-                header("Location: /dashboard");
+                header("Location: /myExpense/dashboard");
                 exit;
             } else {
                 $messageService::errorMesssage("Incorrect password.");
