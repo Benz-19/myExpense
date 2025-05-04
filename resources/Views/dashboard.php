@@ -214,7 +214,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
                     </svg>
                 </button>
                 
-                <div class="flex flex-col ml-20 welU">
+                <div class="flex flex-col justify-center items-center ml-20 welU">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
                     <h3 class="mt-10 text-xl font-bold <?php echo $balanceClass; ?> dark:text-gray-100">
                         <?php echo number_format($userBalance, 2); ?>
