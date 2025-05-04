@@ -4,7 +4,6 @@
 
 ## Features
 
-* **Expense Management**: Add, edit, and delete expense entries with ease.
 * **Categorization**: Organize expenses into customizable categories for better tracking.
 * **Responsive Design**: Accessible on various devices, ensuring usability on desktops, tablets, and smartphones.
 * **Data Visualization**: Gain insights through charts and summaries of your spending habits.
