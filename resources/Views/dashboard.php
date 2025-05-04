@@ -49,7 +49,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         }
 
         .maTop{
-            margin-top:100px;
+            margin-top:12px;
             padding: 0 60px:
         }
         
