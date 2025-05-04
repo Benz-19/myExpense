@@ -52,12 +52,6 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
             margin-top: 100px;
             padding: 0 60px:
         }
-
-        header{
-            display: flex;
-            flex-wrap: wrap;
-            max-width: fit-content;
-        }
         
         .sidebar {
             width: 250px;
@@ -173,6 +167,10 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         .logout-button:hover {
             background-color: #38a169; 
         }
+
+        .welU{
+            width:100%;
+        }
     </style>
 </head>
 
@@ -216,7 +214,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
                     </svg>
                 </button>
                 
-                <div class="flex flex-col ml-12">
+                <div class="flex flex-col ml-20 welU">
                     <h1 class="text-xl font-bold text-gray-800 dark:text-gray-100">Welcome <?php echo $_SESSION['user_details']['username']; ?>!</h1>
                     <h3 class="mt-10 text-xl font-bold <?php echo $balanceClass; ?> dark:text-gray-100">
                         <?php echo number_format($userBalance, 2); ?>
