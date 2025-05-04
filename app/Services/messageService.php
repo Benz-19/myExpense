@@ -17,6 +17,7 @@ class messageService
         echo '<div class="success">' . ' <h1>' . $msg . '</h1>' . '</div>';
     }
 
+}
     echo '
             <style>
                 .error {
@@ -57,6 +58,3 @@ class messageService
             });
         </script>
     ';
-
-}
-
