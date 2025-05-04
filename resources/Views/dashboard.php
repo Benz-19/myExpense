@@ -90,6 +90,9 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
                 <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Statistics</a>
                 <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Inbox</a>
                 <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-700">Notifications</a>
+                <a href="/myExpense/logout">
+                  <button class="mt-8 bg-red-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Logout</button>
+                </a>
             </nav>
         </aside>
 
