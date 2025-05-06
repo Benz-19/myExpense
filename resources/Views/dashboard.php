@@ -1,8 +1,8 @@
 <?php
-if (!isset($_SESSION['user_state'])) {
-    header('Location: /myExpense/login');
-    exit;
-}
+// if (!isset($_SESSION['user_state'])) {
+//     header('Location: /myExpense/login');
+//     exit;
+// }
 
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ExpenseController;
