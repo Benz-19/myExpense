@@ -1,8 +1,8 @@
 <?php
-// if (!isset($_SESSION['user_state'])) {
-//     header('Location: /myExpense/login');
-//     exit;
-// }
+if (!isset($_SESSION['user_state'])) {
+    header('Location: /myExpense/login');
+    exit;
+}
 
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\ExpenseController;
@@ -19,6 +19,11 @@ $balanceClass = $userBalance <= 0 ? 'text-red-500' : 'text-green-600';
 $expense = new ExpenseController();
 $todayCost = $expense->getTodayCost($_SESSION['user_details']['user_id']);
 $todayCost = $todayCost > 0 ? $todayCost : 0.00;
+
+// display user_details
+echo '<pre>';
+print_r($_SESSION['user_details']);
+echo '<pre>';
 ?>
 
 <!DOCTYPE html>
