@@ -183,7 +183,7 @@ $todayCost = $todayCost > 0 ? $todayCost : 0.00;
         <aside id="sidebar" class="sidebar">
             <div class="flex flex-col h-full">
                 <div class="flex items-center gap-2 p-4 border-b border-gray-700">
-                    <img src="/public/images/logo.png" alt="logo" class="w-10 h-auto">
+                    <img src="./public/images/logo (2).png" alt="logo" class="w-10 h-auto">
                     <div class="text-lg font-semibold">myExpense</div>
                 </div>
                 <nav class="nav-links flex-1 overflow-y-auto">
