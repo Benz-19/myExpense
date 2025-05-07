@@ -16,7 +16,7 @@ if (isset($_POST['submitRegistration'])) {
 //--- REGISTRATION
 function processRegistration()
 {
-   // session_start();
+    // session_start();
     $user = new UserController();
     $messageService = new messageService();
     $username = $_POST['name'];
@@ -27,10 +27,10 @@ function processRegistration()
     $user_type = 'user'; //default
 
     if (empty($username) || empty($password) || empty($password) || empty($verifyPassword) || empty($email)) {
-    $_SESSION['error_message'] = $messageService::errorMesssage("Failed to get the read the data successfully!!!");
+        $_SESSION['error_message'] = $messageService::errorMesssage("Failed to get the read the data successfully!!!");
     } else {
         if ($password !== $verifyPassword) {
-    $_SESSION['error_message'] = $messageService::errorMesssage("Ensure passwords are similar!!!");
+            $_SESSION['error_message'] = $messageService::errorMesssage("Ensure passwords are similar!!!");
         } else {
             // detemine if the user exists
             if (empty($user->fetchUserData((string)$email))) {
@@ -46,7 +46,7 @@ function processRegistration()
 // LOGIN
 function processLogin()
 {
-   //session_start();
+    //session_start();
     $user = new UserController();
     $messageService = new messageService();
     $userBalance = new BalanceController();
@@ -81,9 +81,8 @@ function processLogin()
                 header("Location: /myExpense/dashboard");
                 exit;
             } else {
-               $_SESSION['error_message'] = $messageService::errorMesssage("Incorrect password.");
+                $_SESSION['error_message'] = $messageService::errorMesssage("Incorrect password.");
             }
         }
     }
 }
-
